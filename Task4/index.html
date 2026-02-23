@@ -23,7 +23,7 @@
             }
             else if (myform.div.checked) {
                 if (parseInt(b) == 0) {
-                    c = "Cann't divide with 0";
+                    c = "Can't divide by 0";
                     myform.result.value = c;
                 }
                 else {
@@ -36,7 +36,7 @@
                 myform.result.value = c;
             }
             else {
-                c = "Enter Valid Operator";
+                c = "Select Valid Operator";
                 myform.result.value = c;
             }
         }
@@ -51,16 +51,16 @@
         <br />
         Select operator:
         <br />
-        <input type="radio" id="add" name="calculator" value="+" />
+        <input type="radio" id="add" name="calculator"/>
         Adddition
         <br />
-        <input type="radio" id="sub" name="calculator" value="-" />
+        <input type="radio" id="sub" name="calculator"/>
         Subtraction
         <br />
-        <input type="radio" id="mul" name="calculator" value="-" />
+        <input type="radio" id="mul" name="calculator"/>
         Multiplication
         <br />
-        <input type="radio" id="div" name="calculator" value="-" />
+        <input type="radio" id="div" name="calculator"/>
         Division
         <br />
         <br />
