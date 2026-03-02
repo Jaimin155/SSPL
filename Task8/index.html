@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="todo">
+        <div class="main">
+            <div class="heading">
+                <h2>ToDo List</h2>
+            </div>
+            <div class="field">
+                <input type="text" id="t1" name="txt1" placeholder="Add Task Here...">
+                <button id="btn" onclick="add()">+Add</button>
+            </div>
+            <p id="p1"></p>
+        </div>
+    </div>
+
+    <script>
+        var editIndex = -1;
+        var arr = JSON.parse(localStorage.getItem("task"));
+        if (localStorage.length == 0) {
+            arr = [];
+        }
+
+        function display() {
+            var viewTask = "";
+            for (var i = 0; i < arr.length; i++) {
+                viewTask += `<div class="view">${arr[i]} <div><button id="edit-btn" onclick="edit(${i})">Edit</button><button id="del-btn" onclick="del(${i})">Delete</button></div></div><hr/>`;
+            }
+            document.getElementById("p1").innerHTML = viewTask;
+        }
+
+        function edit(i) {
+            document.getElementsByName("txt1")[0].value = arr[i];
+            editIndex = i;
+            document.getElementById("btn").innerText = "Update";
+        }
+
+        function del(i) {
+            var newArr = [];
+            for (var j = 0; j < arr.length; j++) {
+                if (j !== i) {
+                    newArr.push(arr[j]);
+                }
+            }
+            arr = newArr;
+            localStorage.setItem("task", JSON.stringify(arr));
+            display();
+        }
+
+        function add() {
+            var val = document.getElementsByName("txt1")[0].value;
+            // arr.push(val);
+            if (editIndex == -1) {
+                arr.push(val);
+            }
+            else {
+                arr[editIndex] = val;
+                editIndex = -1;
+                document.getElementById("btn").innerText = "+Add";
+            }
+            localStorage.setItem("task", JSON.stringify(arr));
+
+            document.getElementsByName("txt1")[0].value = "";
+            display();
+        }
+        display();
+    </script>
+
+</body>
+
+</html>
