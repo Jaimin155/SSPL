@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=4, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>All records</h3>
+    <div id="p"></div>
+    <table border="1" id="x">
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Position Applied</th>
+            <th>Language Known</th>
+            <th>Update/Delete</th>
+        </tr>
+    </table>
+    <script>
+        var a = "";
+        var data;
+        if (localStorage.length == 0) {
+                data = [];
+        }
+        data = JSON.parse(localStorage.getItem("arr"));
+        for (var i = 0; i < data.length; i++) {
+            var languages = data[i].Language.join(", ");
+            a += "<tr>";
+            a += `<td>${data[i].Name}</td>`;
+            a += `<td>${data[i].Gender}</td>`;
+            a += `<td>${data[i].Age}</td>`;
+            a += `<td>${data[i].Role}</td>`;
+            a += `<td>${languages}</td>`;
+            a += `<td><button onclick='editData(${i})'>Edit</button><button onclick='deleteData(${i})'>Delete</button></td>`;
+            a += "</tr>";
+        }
+        document.getElementById("x").innerHTML += a;
+
+        function editData(i) {
+            localStorage.setItem("editIndex", i);
+            location = "index.html";
+        }
+        function deleteData(i) {
+            var newArr = [];
+            for (var j = 0; j < data.length; j++) {
+                if (j !== i) {
+                    newArr.push(data[j]);
+                }
+            }
+            data = newArr;
+            localStorage.setItem("arr", JSON.stringify(data));
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!-- Objects inside Array - CRUD - LocalStorage -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label>Name:</label>
+    <input type="text" id="name">
+    <br />
+    <label>Gender:</label>
+    <select name="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+    <br />
+    <label>Age:</label>
+    <input type="number" id="age">
+    <br />
+    <label>Position Available:</label>
+    <input type="radio" name="role" value="Fullstack"> <label>FullStack</label>
+    <input type="radio" name="role" value="Backend"> <label>Backend</label>
+    <input type="radio" name="role" value="Frontend"> <label>Frontend</label>
+    <br />
+    <label>Programming Language:</label>
+    <input type="checkbox" name="pl" value="React"> React
+    <input type="checkbox" name="pl" value="Node"> Node
+    <input type="checkbox" name="pl" value="Angular"> Angular
+    <input type="checkbox" name="pl" value="Java"> Java
+    <input type="checkbox" name="pl" value="Python"> Python
+    <br />
+    <input type="button" id="btnsubmit" value="Submit" onclick="addData()">
+    <a href="data.html">See All Data</a>
+    <script>
+        var arr = [];
+        function addData() {
+            var name = document.getElementById("name").value;
+            var gender = document.getElementsByName("gender")[0].value;
+            var age = document.getElementById("age").value;
+            var role;
+            if (document.getElementsByName("role")[0].checked) {
+                role = "FullStack";
+            }
+            else if (document.getElementsByName("role")[1].checked) {
+                role = document.getElementsByName("role")[1].value;
+            }
+            else {
+                role = "Frontend";
+            }
+            var i = 0;
+            var pl = [];
+            for (i = 0; i < 5; i++) {
+                if (document.getElementsByName("pl")[i].checked) {
+                    pl.push(document.getElementsByName("pl")[i].value);
+                }
+            }
+            // arr.push(name);
+            // arr.push(gender);
+            // arr.push(age);
+            // arr.push(role);
+            // arr.push(JSON.stringify(pl));
+            // localStorage.setItem("arr", arr);
+
+            var myObj = {
+                Name: name,
+                Gender: gender,
+                Age: age,
+                Role: role,
+                Language: pl,
+            }
+            // console.log(myObj.Name);
+            // console.log(myObj.Gender);
+            // console.log(myObj.Age);
+            // console.log(myObj.Role);
+            // console.log(myObj.Language);
+
+            var arr = JSON.parse(localStorage.getItem("arr"));
+            if (localStorage.length == 0) {
+                arr = [];
+            }
+
+            var editIndex = localStorage.getItem("editIndex");
+            if (editIndex !== null) {
+                document.getElementById("btnsubmit").value = 'Update';
+                arr[editIndex] = myObj;
+                localStorage.removeItem("editIndex");
+                alert("Data Updated Successfully");
+                document.getElementById("btnsubmit").value = 'Submit';
+            } else {
+                arr.push(myObj);
+                alert("Data Saved Successfully");
+            }
+            localStorage.setItem("arr", JSON.stringify(arr));
+        }
+
+    </script>
+</body>
+
+</html>
