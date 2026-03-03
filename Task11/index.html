@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .card {
+        border: 1px solid grey;
+        width: 300px;
+        height: 100px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: azure;
+    }
+
+    h1 {
+        display: flex;
+        justify-content: center;
+        color: brown;
+    }
+
+    .btn {
+        margin-top: -5px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .main {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    button {
+        padding: 5px;
+        width: 90px;
+        background-color: aliceblue;
+        border: 1px solid grey;
+        border-radius: 5px;
+        color: brown;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <div class="card">
+            <h1 id="counter">0</h1>
+            <div class="btn">
+                <button onclick="Start()">Start</button>
+                <button onclick="Stop()">Stop</button>
+                <button onclick="Pause()">Pause</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var i = 0;
+        var a;
+        function Start() {
+            a = setInterval(() => {
+                i++;
+                document.getElementById("counter").innerText = i;
+                if (i == 10) {
+                    Stop();
+                }
+            }, 1000)
+        }
+        function Stop() {
+            clearInterval(a);
+            i = 0;
+            document.getElementById("counter").innerText = i;
+        }
+        function Pause() {
+            clearInterval(a);
+            document.getElementById("counter").innerText = i;
+        }
+    </script>
+</body>
+
+</html>
