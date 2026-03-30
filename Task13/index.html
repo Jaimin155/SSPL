@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #time {
+            color: rgb(212, 166, 104);
+        }
+        #date {
+            color: rgb(212, 166, 104);
+        }
+        .main {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+        .card {
+            padding: 0px 30px 0px 30px;
+            background-color: aliceblue;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid grey;
+            box-shadow: 5px 5px rgba(128, 128, 128, 0.219);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="card">
+            <h1 style="color:rgb(100, 64, 17);">Digital Clock</h1>
+            <h2 id="time"></h2>
+            <h2 id="date"></h2>
+        </div>
+    </div>
+    <script>
+        function clock() {
+            let dt = new Date();
+            let h = dt.getHours();
+            let min = dt.getMinutes();
+            let s = dt.getSeconds();
+
+            let d = dt.getDate();
+            let m = dt.getMonth();
+            let y = dt.getFullYear();
+
+            document.getElementById("time").innerText = "Time: " + h + ":" + min + ":" + s;
+            document.getElementById('date').innerText = "Date: " + d + ":" + m + ":" + y;
+        }
+        window.onload = () => {
+            clock();
+            setInterval(clock, 1000);
+        };
+    </script>
+</body>
+
+</html>
