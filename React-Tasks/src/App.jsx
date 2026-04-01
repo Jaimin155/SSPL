@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import CountCharacters from "./Task3/CountCharacters";
 import CounterApplicaion from "./Task4/CounterApp";
+import DigitalClock from "./Task7/DigitalClock";
 
 function App() {
     return (
@@ -10,6 +11,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/task3" element={<CountCharacters />} />
                 <Route path="/task4" element={<CounterApplicaion />} />
+                <Route path="/task7" element={<DigitalClock />} />
             </Routes>
         </BrowserRouter>
     );
