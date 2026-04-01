@@ -3,6 +3,7 @@ import Home from "./Home";
 import CountCharacters from "./Task3/CountCharacters";
 import CounterApplicaion from "./Task4/CounterApp";
 import DigitalClock from "./Task7/DigitalClock";
+import GuessNo from "./Task8/GuessNumber";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                 <Route path="/task3" element={<CountCharacters />} />
                 <Route path="/task4" element={<CounterApplicaion />} />
                 <Route path="/task7" element={<DigitalClock />} />
+                <Route path="/task8" element={<GuessNo />} />
             </Routes>
         </BrowserRouter>
     );
