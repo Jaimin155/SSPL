@@ -6,6 +6,7 @@ import DigitalClock from "./Task7/DigitalClock";
 import GuessNo from "./Task8/GuessNumber";
 import Calc from "./Task9/BasicCalc";
 import SimpleCalculator from "./Task10/SimpleCalc";
+import GstCalculator from "./Task11/GstCalc";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/task8" element={<GuessNo />} />
                 <Route path="/task9" element={<Calc />} />
                 <Route path="/task10" element={<SimpleCalculator />} />
+                <Route path="/task11" element={<GstCalculator />} />
             </Routes>
         </BrowserRouter>
     );
