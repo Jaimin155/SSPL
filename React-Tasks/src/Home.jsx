@@ -8,6 +8,12 @@ class Home extends React.Component {
                 <h3>React Tasks</h3>
                 <ul>
                     <li>
+                        <Link to="/task1" className='link'>Task 1 - Single Page Application using Navigation in React</Link>
+                    </li>
+                    <li>
+                        <Link to="/task2" className='link'>Task 2 - Take a String from User and Print in Uppercase and Lowercase</Link>
+                    </li>
+                    <li>
                         <Link to="/task3" className='link'>Task 3 - Count Characters</Link>
                     </li>
                     <li>
@@ -15,6 +21,9 @@ class Home extends React.Component {
                     </li>
                     <li>
                         <Link to='/task5' className='link'>Task 5 - Countdown Timer</Link>
+                    </li>
+                    <li>
+                        <Link to='/task6' className='link'>Task 6 - Password Toggle Textbox</Link>
                     </li>
                     <li>
                         <Link to='/task7' className='link'>Task 7 -  Digital Clock</Link>
